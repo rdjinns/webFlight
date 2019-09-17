@@ -1,0 +1,17 @@
+extends layout
+
+block content
+ if user
+      h1 #{title}
+      form(method='POST', action='/users/edit/'+user._id)
+        #form-group
+          label E-mail:
+          input.form-control(name='email', type='mail', value=user.email)
+        #form-group
+          label Username:
+          input.form-control(name='username', type='text', value=user.username)
+        #form-group
+          label Password:
+          input.form-control(name='password', type='password', value="")
+        br
+        input.btn.btn-primary(type='submit',value='Submit')

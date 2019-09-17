@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  p= 'Bienvenue dans votre espace '+ user.username
+  p= 'Supprimer ou modifier votre compte cliquez ici : '
+  a.btn.btn-danger.delete-user(href='#',data-id=user._id) Delete
+  a.btn.btn-default(href='/users/edit/'+user._id) Edit 

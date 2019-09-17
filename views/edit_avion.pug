@@ -1,0 +1,31 @@
+extends layout
+
+block content
+ if user
+    if user.admin =='1'
+      h1 #{title}
+      form(method='POST', action='/avions/edit/'+avion._id)
+        #form-group
+          label NumVol:
+          input.form-control(name='NumVol', type='text', value=avion.NumVol)
+        #form-group
+          label Date de depart et heure de décollage:
+          input.form-control(name='DateDepart', type='datetime-local', value=avion.DateDepart)
+        #form-group
+          label Date d'atterrissage et heure de d'atterrissage:
+          input.form-control(name='DateArriv', type='datetime-local', value=avion.DateArriv)
+        #form-group
+          label Type:
+          input.form-control(name='type', type='text', value=avion.type)
+        #form-group
+          label Transporteur:
+          input.form-control(name='transporteur', type='text', value=avion.transporteur)
+        #form-group
+          label Piste  decollage:
+          input.form-control(name='pisteDecol', type='text', value=avion.pisteDecol)
+        #form-group
+          label Piste d'atterissage:
+          input.form-control(name='pisteAtterri', type='text', value=avion.pisteAtterri)
+
+        br
+        input.btn.btn-primary(type='submit',value='Submit')

@@ -1,0 +1,31 @@
+.alert-error{
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert-success_msg{
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+
+.footer {
+
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(223, 217, 223);
+  color: rgb(0, 0, 0);
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+h1 {
+  color:rgb(153, 0, 0);
+}
+h3 {
+  color:rgb(0, 153, 13);
+}
+

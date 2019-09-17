@@ -1,0 +1,25 @@
+.alert-error{
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+
+.alert-success_msg{
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+}
+.connex {
+  color: pink;
+  font-size: 14px;
+
+}
+
+.footer {
+  position:absolute;
+  margin: auto;
+  width: 1200px;
+  bottom:0;
+  height:60px;   /* Height of the footer */
+  text-align: center;
+}

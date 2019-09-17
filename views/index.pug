@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1 #{title}
+  ul.list-group
+    each avion, i in avions
+      li.list-group-item
+        a(href="/avions/"+avion._id)= avion.NumVol

@@ -1,0 +1,81 @@
+extends layout
+
+block content
+  script(src="/socket.io/socket.io.js")
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
+  input#NumVol(type='hidden', value=avion.NumVol)
+  input#DateDepart(type='hidden', value=avion.DateDepart)
+  input#DateArriv(type='hidden', value=avion.DateArriv)
+  input#Type(type='hidden', value=avion.type)
+  input#PisteDecol(type='hidden', value=avion.pisteDecol)
+  input#PisteAtteri(type='hidden', value=avion.pisteAtterri)
+  input#Altitude(type='hidden', value=avion.Altitude)
+  script.
+    var avionNum = $('#NumVol').val();
+    var dateDep = $('#DateDepart').val();
+    var dateArriv = $('#DateArriv').val();
+    var type = $('#Type').val();
+    var pisteDec = $('#PisteDecol').val();
+    var pisteAtter = $('#PisteAtteri').val();
+    var Altitude = $('#Altitude').val();
+    date =  new Date(dateDep) // Afficher correctement la date parce que le format venant du JSON est moche
+    date2 =  new Date(dateArriv) // "" 
+  h1= "Provided by "+avion.transporteur
+  table.table.table-striped.table-hover
+    tr
+      th Num Avion
+      th Date de départ
+      th Date arrivée
+      th Type avion
+      th Piste de decollage
+      th Piste atterissage
+      th Altitude actuel
+    tr
+      td
+        script.
+          document.write(avionNum);
+      td
+        script.
+            document.write(date.toUTCString());
+      td
+        script.
+            document.write(date2.toUTCString());
+      td
+        script.
+          document.write(type);
+      td
+        script.
+            document.write(pisteDec);
+      td
+        script.
+            document.write(pisteAtter);
+      td
+        script.
+            document.write(Altitude);                
+  input#id(type='hidden', value=avion._id)
+  - var date = new Date();
+  script.
+    var avionId = $('#id').val();
+    var socket = io.connect('http://localhost:3000');
+    setInterval(function(){
+      
+    }, 15000);
+    socket.on('not-departed',(data) => {
+      if(data.id == avionId){
+        $(document.body).append( "<h3> L'avion n'a pas encore décollé </h3>" );
+      }
+    });
+    socket.on('departed',(data) => {
+      if(data.id == avionId){
+        $(document.body).append( "<h3> L'avion est actuellement en vol </h3>" );
+      }
+    });
+    socket.on('landed',(data) => {
+      if(data.id == avionId){
+        $(document.body).append( "<h3> L'avion a atteri </h3>" );
+      }
+    });
+  if user
+    if user.admin =='1'
+      a.btn.btn-default(href='/avions/edit/'+avion._id) Edit 
+      a.btn.btn-danger.delete-avion(href='#',data-id=avion._id) Delete
